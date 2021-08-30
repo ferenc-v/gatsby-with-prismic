@@ -5,7 +5,7 @@ import { RichText } from 'prismic-reactjs'
 import { Layout } from '../components/Layout'
 import { Seo } from '../components/Seo'
 import { HomepageBanner } from '../components/HomepageBanner'
-import { MainContent } from '../components/MainContent'
+import { SliceZone } from '../components/SliceZone'
 
 const HomeTemplate = ({ data }) => {
   if (!data) return null
@@ -21,13 +21,13 @@ const HomeTemplate = ({ data }) => {
         linkLabel={RichText.asText(doc.banner_link_label.raw)}
         backgroundUrl={doc.banner_background.url}
       />
-      <MainContent />
+      <SliceZone sliceZone={doc.body} />
     </Layout>
   )
 }
 
 export const query = graphql`
-  query Homepage {
+  query MyQuery {
     prismicHomepage {
       data {
         banner_title {
@@ -46,6 +46,16 @@ export const query = graphql`
         }
         banner_background {
           url
+        }
+        body {
+          ...on PrismicSliceType {
+            slice_type
+          }
+          ...HomepageDataBodyText
+          ...HomepageDataBodyQuote
+          ...HomepageDataBodyFullWidthImage
+          ...HomepageDataBodyImageGallery
+          ...HomepageDataBodyImageHighlight
         }
       }
     }
