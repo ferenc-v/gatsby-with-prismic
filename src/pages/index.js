@@ -1,3 +1,7 @@
+// commit 1
+
+// CHANGED COMMIT 1
+
 import * as React from 'react'
 import { graphql } from 'gatsby'
 import { RichText } from 'prismic-reactjs'
