@@ -1,6 +1,6 @@
-// commit 1
+// commit 2
 
-// CHANGED COMMIT 1
+// CHANGED COMMIT 2 AS WELL
 
 import * as React from 'react'
 import { graphql } from 'gatsby'
